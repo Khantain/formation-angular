@@ -1,5 +1,5 @@
-import { Base } from '../shared/base';
-import { Nourriture } from '../shared/nourriture';
+import { Base } from '../../shared/models/base';
+import { Nourriture } from '../../shared/models/nourriture';
 
 export class Animal extends Base {
   dateNaissance: Date;

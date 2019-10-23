@@ -4,13 +4,13 @@ import { ErreurPageComponent } from './erreur-page/erreur-page.component';
 
 const routes: Routes = [
   { path: 'soigneurs',
-    loadChildren: () => import('./soigneurs/soigneurs.module').then(m => m.SoigneursModule)
+    loadChildren: () => import('./features/soigneurs/soigneurs.module').then(m => m.SoigneursModule)
   },
   { path: 'animaux',
-    loadChildren: () => import('./animaux/animaux.module').then(m => m.AnimauxModule)
+    loadChildren: () => import('./features/animaux/animaux.module').then(m => m.AnimauxModule)
   }, 
   { path: '', redirectTo: '', pathMatch: 'full' },
-  // { path: '**', component: ErreurPageComponent }
+  { path: '**', component: ErreurPageComponent }
 ];
 
 @NgModule({

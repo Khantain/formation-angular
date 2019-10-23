@@ -1,11 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { AnimauxModule } from './features/animaux/animaux.module';
+import { SoigneursModule } from './features/soigneurs/soigneurs.module';
+import { SharedModule } from './shared/shared.module';
+
 import { AppComponent } from './app.component';
-import { SoigneursModule } from './soigneurs/soigneurs.module';
-import { AnimauxModule } from './animaux/animaux.module';
 import { ErreurPageComponent } from './erreur-page/erreur-page.component';
+
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { ErreurPageComponent } from './erreur-page/erreur-page.component';
     BrowserModule,
     SoigneursModule,
     AnimauxModule,
+    SharedModule,
     AppRoutingModule,
   ],
   providers: [],

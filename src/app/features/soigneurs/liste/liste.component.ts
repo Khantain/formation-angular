@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SoigneursService } from './../soigneurs.service';
+import { SoigneursService } from '../soigneurs.service';
 import { Soigneur } from '../soigneur';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
