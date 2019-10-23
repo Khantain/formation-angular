@@ -1,2 +1,1 @@
-<button routerLink="/soigneurs" routerLinkActive="active">Soigneurs</button>
-<button routerLink="/animaux" routerLinkActive="active">Animaux</button>
+<button *ngFor="let menu of menus" routerLink="/{{ menu }}" routerLinkActive="active" class="btn btn-secondary">{{ menu | firstLetterUppercase }}</button>

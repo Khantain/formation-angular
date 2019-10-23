@@ -1,12 +1,12 @@
-<table class="table">
+<table class="table" *ngIf="rsc">
   <thead>
     <tr>
-      <th *ngFor='let header of headers' scope="col">{{ header | uppercase }}</th>
+      <th *ngFor='let header of headers' scope="col">{{ traduire(header) | firstLetterUppercase }}</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor='let item of data$ | async'>
-      <td *ngFor='let header of headers'>{{ item[header] }}</td>
+      <td *ngFor='let header of headers'>{{ getValue(item[header]) }}</td>
       <button type="button" class="btn btn-secondary" (click)="voirDetail(item)">Voir le détail</button>
     </tr>
   </tbody>

@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="card-header">
+      Santé
+    </div>
+    <div class="card-body">
+      <form [formGroup]="form">
+        <label>
+          Poids:
+          <input class="form-control" type="text" formControlName="poids">
+        </label>
+        <div class="form-group">
+            <label>Malade:</label>
+            <div class="row">
+              <label class="md-check">
+                <input type="radio" value="true" name="estMalade" formControlName="estMalade">
+                Oui
+              </label>
+          
+              <label class="md-check">
+                <input type="radio" value="false" name="estMalade" formControlName="estMalade">     
+                Non
+              </label>
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>

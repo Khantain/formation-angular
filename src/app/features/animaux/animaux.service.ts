@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Animal } from './animal';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Animal } from './animal';
 
 const animaux: Animal[] = [
   {
@@ -22,7 +23,7 @@ const animaux: Animal[] = [
     famille: "felin"
   },
   {
-    id: 1,
+    id: 3,
     nom: 'Pari',
     dateNaissance: new Date(),
     estMalade: false,
@@ -41,5 +42,17 @@ export class AnimauxService {
 
   getAnimaux(): Observable<Animal[]> {
     return of(animaux);
+  }
+
+  getAnimal(id: number): Observable<Animal> {
+    return this.getAnimaux().pipe(
+      map(animaux => animaux.find(animal => animal.id === id))
+    )
+  }
+
+  checkUnicite(nom: string) {
+    return this.getAnimaux().pipe(
+      map(animaux => animaux.find(animal => animal.nom === nom))
+    );
   }
 }

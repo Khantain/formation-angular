@@ -1,6 +1,8 @@
-import { Component, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { TableService } from './table.service';
 
 @Component({
   selector: 'app-table',
@@ -15,17 +17,38 @@ export class TableComponent implements OnInit {
 
   @ViewChild('template') template
 
+  rsc: any;
   selectedItem: any;
   modalRef: BsModalRef;
 
-  constructor() {
+  constructor(
+    private service: TableService
+  ) {
     this.onClick = new EventEmitter<any>();
   }
 
   ngOnInit() {
+    this.service.getResources().pipe(
+      tap(rsc => this.rsc = rsc)
+    ).subscribe();
   }
 
   voirDetail(item: any) {
     this.onClick.emit(item);
+  }
+
+  traduire(cle: string) {
+    return this.rsc[cle] || cle;
+  }
+
+  getValue(value: any) {
+    switch (true) {
+      case value instanceof Date:
+        return value.toISOString().substring(0, 10);
+      case typeof value ==='boolean':
+        return value ? "Oui" : "Non";
+      default:
+        return value;
+    }
   }
 }

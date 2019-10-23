@@ -1,3 +1,14 @@
-<p>
-  detail works!
-</p>
+<h1>{{ title }}</h1>
+
+<ng-container *ngTemplateOutlet="buttons"></ng-container>
+<span class="oi oi-heart" [style.color]="estMalade ? 'red' : 'green'"></span>
+<app-identification [animal]="animal$ | async" [form]="identificationForm"></app-identification>
+<app-sante [animal]="animal$ | async" [form]="santeForm" (onMaladieChange)="onMaladieChange($event)"></app-sante>
+<app-alimentation [animal]="animal$ | async" [form]="alimentationForm"></app-alimentation>
+
+<ng-container *ngTemplateOutlet="buttons"></ng-container>
+
+<ng-template #buttons>
+  <button class="btn btn-primary" (click)="save()" [disabled]="form.invalid">Valider</button>
+  <button class="btn btn-secondary" (click)="retourListe()">Retour</button>
+</ng-template>
