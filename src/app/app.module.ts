@@ -3,14 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SoigneursModule } from './soigneurs/soigneurs.module';
+import { AnimauxModule } from './animaux/animaux.module';
+import { ErreurPageComponent } from './erreur-page/erreur-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ErreurPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    SoigneursModule,
+    AnimauxModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
