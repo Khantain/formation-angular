@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
-import { SoigneursService } from '../soigneurs.service';
+import { DetailSoigneurComponent } from '../detail/detail.component';
 import { Soigneur } from '../soigneur';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { SoigneursService } from '../soigneurs.service';
 
 @Component({
   selector: 'app-liste',
@@ -17,25 +18,18 @@ export class ListeComponent implements OnInit {
   ];
 
   soigneurs$: Observable<Array<Soigneur>>;
-  selectedSoigneur: Soigneur;
-  modalRef: BsModalRef;
-
-  @ViewChild('template') template
 
   constructor(
     private service: SoigneursService,
-    private modalService: BsModalService) { }
+    private modalService: NgbModal,
+  ) { }
 
   ngOnInit() {
     this.soigneurs$ = this.service.getSoigneurs();
   }
 
   voirDetail(soigneur: Soigneur) {
-    this.selectedSoigneur = soigneur;
-    this.modalRef = this.modalService.show(this.template);
-  }
-
-  hideModal() {
-    this.modalRef.hide()
+    const modalRef = this.modalService.open(DetailSoigneurComponent);
+    modalRef.componentInstance.soigneur = soigneur;
   }
 }

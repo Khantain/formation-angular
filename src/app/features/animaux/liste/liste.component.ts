@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Animal } from '../animal';
+import { AnimauxService } from '../animaux.service';
 
 @Component({
   selector: 'app-liste',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListeComponent implements OnInit {
 
-  constructor() { }
+  animaux$: Observable<Animal[]>
+
+  constructor(
+    private service: AnimauxService
+  ) { }
 
   ngOnInit() {
+    this.animaux$ = this.service.getAnimaux();
   }
 
 }

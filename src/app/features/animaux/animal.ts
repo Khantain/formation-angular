@@ -1,9 +1,9 @@
-import { Base } from '../../shared/models/base';
-import { Nourriture } from '../../shared/models/nourriture';
+import { Base } from '../../core/models/base';
 
 export class Animal extends Base {
   dateNaissance: Date;
   estMalade: boolean;
   poids: number;
-  alimentation: Array<Nourriture>;
+  alimentation: string;
+  famille: string;
 }

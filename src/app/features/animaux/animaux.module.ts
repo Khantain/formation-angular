@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { AnimauxRoutingModule } from './animaux-routing.module';
-import { DetailComponent } from './detail/detail.component';
+import { DetailAnimalComponent } from './detail/detail.component';
 import { ListeComponent } from './liste/liste.component';
 
 
 @NgModule({
-  declarations: [ListeComponent, DetailComponent],
+  declarations: [ListeComponent, DetailAnimalComponent],
   imports: [
     SharedModule,
     AnimauxRoutingModule

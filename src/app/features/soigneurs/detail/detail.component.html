@@ -1,3 +1,4 @@
-<p>
-  detail works!
-</p>
+<app-modal [title]="title">
+  <p>{{soigneur.nom}} {{soigneur.prenom}}</p>
+  <img [src]="soigneur.photoURL" alt="photo" class="photo" />
+</app-modal>

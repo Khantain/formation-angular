@@ -15,7 +15,7 @@ export class SoigneursService {
 
   constructor() { }
 
-  getSoigneurs(): Observable<Array<Soigneur>> {
+  getSoigneurs(): Observable<Soigneur[]> {
     return of(soigneurs);
   }
 }
