@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Animal } from './../../animal';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Famille } from 'src/app/core/models/famille';
+import { Animal } from '../../../../core/models/animal';
 
 @Component({
   selector: 'app-identification',
@@ -11,6 +12,7 @@ export class IdentificationComponent implements OnInit {
 
   @Input('animal') animal: Animal;
   @Input('form') form: FormGroup;
+  @Input('familles') familles: Array<Famille>;
 
   get nom() {
     return this.form.get('nom') as FormControl;

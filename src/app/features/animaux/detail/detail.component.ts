@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { Animal } from '../animal';
+import { switchMap, tap } from 'rxjs/operators';
+import { Alimentation } from 'src/app/core/models/alimentation';
+import { Famille } from 'src/app/core/models/famille';
+import { UniqueValidator } from 'src/app/shared/validators/unique.validator';
+import { Animal } from '../../../core/models/animal';
 import { AnimauxService } from '../animaux.service';
-import { UniqueValidator } from 'src/app/shared/unique.validator';
 
 @Component({
   selector: 'app-detail',
@@ -17,6 +19,8 @@ export class DetailAnimalComponent implements OnInit {
   readonly title = `Detail de l'animal`;
 
   animal$: Observable<Animal>;
+  familles$: Observable<Array<Famille>>;
+  alimentations$: Observable<Array<Alimentation>>;
   form: FormGroup;
   isLoaded: boolean;
   estMalade: boolean;
@@ -28,7 +32,7 @@ export class DetailAnimalComponent implements OnInit {
     return this.form.get('sante') as FormGroup;
   }
   get alimentationForm() {
-    return this.form.get('alimentation') as FormControl;
+    return this.form.get('alimentation') as FormGroup;
   }
 
   constructor(
@@ -37,10 +41,11 @@ export class DetailAnimalComponent implements OnInit {
     private service: AnimauxService,
     private validator: UniqueValidator,
     private fb: FormBuilder
-  ) {}
+  ) {
+    this.createForm();
+  }
   
   ngOnInit() {
-    this.createForm();
     this.animal$ = this.route.paramMap.pipe(
       switchMap(params => this.service.getAnimal(+params.get('id'))),
       tap(animal => {
@@ -49,26 +54,29 @@ export class DetailAnimalComponent implements OnInit {
         }
       })
     );
+
+    this.familles$ = this.service.getFamilles();
+    this.alimentations$ = this.service.getAlimentations();
   }
 
   createForm() {
     this.form = this.fb.group({
       identification: this.fb.group({
-        nom: ['',
+        nom: [null,
           [Validators.required, Validators.maxLength(15)],
           [this.validator.validate.bind(this.validator)]
         ],
-        dateNaissance: ['',
+        dateNaissance: [null,
           [Validators.required]
         ],
-        famille: new FormControl(),
+        famille: [null],
       }),
       sante: this.fb.group({
-        estMalade: new FormControl(),
-        poids: new FormControl()
+        estMalade: [null],
+        poids: [null]
       }),
       alimentation: this.fb.group({
-        alimentation: new FormControl()
+        alimentation: [null]
       })
     });
   }

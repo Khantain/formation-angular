@@ -1,13 +1,18 @@
 <div class="card">
-    <div class="card-header">
-      Alimenation
-    </div>
-    <div class="card-body">
-      <form [formGroup]="form">
-        <label>
-          Alimentation:
-          <input class="form-control" type="text" formControlName="alimentation">
-        </label>
-      </form>
-    </div>
+  <div class="card-header">
+    Alimenation
   </div>
+  <div class="card-body">
+    <form [formGroup]="form">
+      <label>
+        Alimentation:
+        <div class="form-group">
+          <label for="sel1">Select list:</label>
+          <select class="form-control" id="sel1" formControlName="alimentation">
+            <option *ngFor="let alim of alimentations" value="{{alim.id}}">{{alim.nom}}</option>
+          </select>
+        </div>
+      </label>
+    </form>
+  </div>
+</div>

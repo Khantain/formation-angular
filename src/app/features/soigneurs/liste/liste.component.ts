@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { DetailSoigneurComponent } from '../detail/detail.component';
-import { Soigneur } from '../soigneur';
+import { Soigneur } from '../../../core/models/soigneur';
 import { SoigneursService } from '../soigneurs.service';
 
 @Component({

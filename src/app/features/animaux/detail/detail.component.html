@@ -1,10 +1,12 @@
 <h1>{{ title }}</h1>
 
 <ng-container *ngTemplateOutlet="buttons"></ng-container>
+
 <span class="oi oi-heart" [style.color]="estMalade ? 'red' : 'green'"></span>
-<app-identification [animal]="animal$ | async" [form]="identificationForm"></app-identification>
+
+<app-identification [familles]="familles$ | async" [animal]="animal$ | async" [form]="identificationForm"></app-identification>
 <app-sante [animal]="animal$ | async" [form]="santeForm" (onMaladieChange)="onMaladieChange($event)"></app-sante>
-<app-alimentation [animal]="animal$ | async" [form]="alimentationForm"></app-alimentation>
+<app-alimentation [alimentations]="alimentations$ | async" [animal]="animal$ | async" [form]="alimentationForm"></app-alimentation>
 
 <ng-container *ngTemplateOutlet="buttons"></ng-container>
 

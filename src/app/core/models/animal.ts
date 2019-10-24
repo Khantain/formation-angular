@@ -1,9 +1,9 @@
-import { Base } from '../../core/models/base';
+import { Base } from './base';
 
 export class Animal extends Base {
   dateNaissance: Date;
   estMalade: boolean;
   poids: number;
-  alimentation: string;
-  famille: string;
+  alimentation: number;
+  famille: number;
 }

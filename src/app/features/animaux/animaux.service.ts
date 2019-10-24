@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Animal } from './animal';
+import { Animal } from '../../core/models/animal';
+import { Alimentation } from 'src/app/core/models/alimentation';
+import { Famille } from 'src/app/core/models/famille';
 
 const animaux: Animal[] = [
   {
@@ -10,8 +12,8 @@ const animaux: Animal[] = [
     dateNaissance: new Date(),
     estMalade: true,
     poids: 32.5,
-    alimentation: "viande",
-    famille: "canidé"
+    alimentation: 1,
+    famille: 1
   },
   {
     id: 2,
@@ -19,8 +21,8 @@ const animaux: Animal[] = [
     dateNaissance: new Date(),
     estMalade: false,
     poids: 5,
-    alimentation: "croquette",
-    famille: "felin"
+    alimentation: 3,
+    famille: 3
   },
   {
     id: 3,
@@ -28,9 +30,21 @@ const animaux: Animal[] = [
     dateNaissance: new Date(),
     estMalade: false,
     poids: 1.5,
-    alimentation: "graines",
-    famille: "oiseau"
+    alimentation: 2,
+    famille: 2
   },
+];
+
+const alimentations = [
+  {id: 1, nom: "croquettes"},
+  {id: 2, nom: "graines"},
+  {id: 3, nom: "viande"},
+];
+
+const familles = [
+  {id: 1, nom: "canidé"},
+  {id: 2, nom: "oiseau"},
+  {id: 3, nom: "félin"},
 ];
 
 @Injectable({
@@ -54,5 +68,13 @@ export class AnimauxService {
     return this.getAnimaux().pipe(
       map(animaux => animaux.find(animal => animal.nom === nom))
     );
+  }
+
+  getAlimentations(): Observable<Array<Alimentation>> {
+    return of (alimentations);
+  }
+  
+  getFamilles(): Observable<Array<Famille>> {
+    return of (familles);
   }
 }

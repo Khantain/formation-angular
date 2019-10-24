@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AsyncValidator, AbstractControl, ValidationErrors } from '@angular/forms';
-import { AnimauxService } from '../features/animaux/animaux.service';
+import { AnimauxService } from '../../features/animaux/animaux.service';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 

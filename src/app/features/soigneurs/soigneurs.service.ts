@@ -1,4 +1,4 @@
-import { Soigneur } from './soigneur';
+import { Soigneur } from '../../core/models/soigneur';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 

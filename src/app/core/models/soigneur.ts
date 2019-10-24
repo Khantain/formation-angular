@@ -1,4 +1,4 @@
-import { Base } from '../../core/models/base';
+import { Base } from './base';
 
 export class Soigneur extends Base {
   prenom: string;

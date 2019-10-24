@@ -15,7 +15,12 @@
       </label>
       <label>
         Famille:
-        <input class="form-control" type="text" formControlName="famille">
+        <div class="form-group">
+            <label for="sel">Select list:</label>
+            <select class="form-control" id="sel" formControlName="famille">
+              <option *ngFor="let famille of familles" value="{{famille.id}}">{{famille.nom}}</option>
+            </select>
+          </div>
       </label>
     </form>
   </div>

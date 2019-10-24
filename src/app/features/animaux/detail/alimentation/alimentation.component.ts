@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Animal } from '../../animal';
+import { Animal } from '../../../../core/models/animal';
+import { Alimentation } from 'src/app/core/models/alimentation';
 
 @Component({
   selector: 'app-alimentation',
@@ -11,6 +12,7 @@ export class AlimentationComponent implements OnInit {
 
   @Input('animal') animal: Animal;
   @Input('form') form: FormGroup;
+  @Input('alimentations') alimentations: Array<Alimentation>;
 
   constructor() { }
 
