@@ -6,8 +6,11 @@
     <form [formGroup]="form">
       <label>
         Poids:
-        <input type="text" formControlName="poids">
+        <input appNumberFormat type="text" formControlName="poids">
       </label>
+      <div *ngIf="poids.dirty && poids.invalid">
+          <div *ngIf="poids.errors.pattern">Nombre attendu</div>
+        </div>
       <div class="form-group">
         <label>Malade:</label>
         <div class="row">

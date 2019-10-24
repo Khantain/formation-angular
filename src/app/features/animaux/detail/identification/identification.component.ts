@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Famille } from 'src/app/core/models/famille';
-import { Animal } from '../../../../core/models/animal';
+import { Famille } from 'src/app/shared/models/famille';
+import { Animal } from '../../../../shared/models/animal';
 
 @Component({
   selector: 'app-identification',
@@ -16,6 +16,9 @@ export class IdentificationComponent implements OnInit {
 
   get nom() {
     return this.form.get('nom') as FormControl;
+  }
+  get dateNaissance() {
+    return this.form.get('dateNaissance') as FormControl;
   }
 
   constructor() { }

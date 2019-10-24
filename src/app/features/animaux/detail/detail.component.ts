@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { Alimentation } from 'src/app/core/models/alimentation';
-import { Famille } from 'src/app/core/models/famille';
+import { Alimentation } from 'src/app/shared/models/alimentation';
+import { Famille } from 'src/app/shared/models/famille';
 import { UniqueValidator } from 'src/app/shared/validators/unique.validator';
-import { Animal } from '../../../core/models/animal';
+import { Animal } from '../../../shared/models/animal';
 import { AnimauxService } from '../animaux.service';
 
 @Component({
@@ -24,6 +24,7 @@ export class DetailAnimalComponent implements OnInit {
   form: FormGroup;
   isLoaded: boolean;
   estMalade: boolean;
+  animal: Animal;
 
   get identificationForm() {
     return this.form.get('identification') as FormGroup;
@@ -41,15 +42,15 @@ export class DetailAnimalComponent implements OnInit {
     private service: AnimauxService,
     private validator: UniqueValidator,
     private fb: FormBuilder
-  ) {
-    this.createForm();
-  }
+  ) { }
   
   ngOnInit() {
+    this.createForm();
     this.animal$ = this.route.paramMap.pipe(
       switchMap(params => this.service.getAnimal(+params.get('id'))),
       tap(animal => {
         if (animal) {
+          this.animal = animal;
           this.identificationForm.get('nom').setAsyncValidators(null);
         }
       })
@@ -62,21 +63,21 @@ export class DetailAnimalComponent implements OnInit {
   createForm() {
     this.form = this.fb.group({
       identification: this.fb.group({
-        nom: [null,
+        nom: ['',
           [Validators.required, Validators.maxLength(15)],
           [this.validator.validate.bind(this.validator)]
         ],
-        dateNaissance: [null,
+        dateNaissance: ['',
           [Validators.required]
         ],
-        famille: [null],
+        famille: [''],
       }),
       sante: this.fb.group({
-        estMalade: [null],
-        poids: [null]
+        estMalade: [''],
+        poids: ['']
       }),
       alimentation: this.fb.group({
-        alimentation: [null]
+        alimentation: ['']
       })
     });
   }

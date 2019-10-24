@@ -7,14 +7,15 @@ import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DetailAnimalComponent } from '../features/animaux/detail/detail.component';
 import { DetailSoigneurComponent } from '../features/soigneurs/detail/detail.component';
-import { FirstLetterUppercasePipe } from './first-letter-uppercase.pipe';
+import { FirstLetterUppercasePipe } from './pipes/first-letter-uppercase.pipe';
 import { ModalComponent } from './modal/modal.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
 import { TableService } from './table/table.service';
+import { NumberFormatDirective } from './directives/number-format.directive';
 
 @NgModule({
-  declarations: [NavbarComponent, TableComponent, ModalComponent, FirstLetterUppercasePipe],
+  declarations: [NavbarComponent, TableComponent, ModalComponent, FirstLetterUppercasePipe, NumberFormatDirective],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -32,6 +33,7 @@ import { TableService } from './table/table.service';
     ModalComponent,
     FormsModule,
     ReactiveFormsModule,
+    NumberFormatDirective,
   ],
   entryComponents: [
     DetailAnimalComponent,

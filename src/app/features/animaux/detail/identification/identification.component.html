@@ -5,22 +5,29 @@
   <div class="card-body">
     <form [formGroup]="form">
       <label>
-        Nom:
-        <input class="form-control"  type="text" formControlName="nom">
-        <div *ngIf="nom.dirty && nom.invalid">Erreur</div>
+        Nom *:
+        <input class="form-control" type="text" formControlName="nom">
+        <div *ngIf="nom.dirty && nom.invalid">
+          <div *ngIf="nom.errors.required">Nom obligatoire</div>
+          <div *ngIf="nom.errors.maxlength">Trop long</div>
+          <div *ngIf="nom.errors.notUnique">Déjà pris</div>
+        </div>
       </label>
       <label>
-        Date:
+        Date *:
         <input type="date" class="form-control" formControlName="dateNaissance">
+        <div *ngIf="dateNaissance.dirty && dateNaissance.invalid">
+          <div *ngIf="dateNaissance.errors.required">Date de naissance obligatoire</div>
+        </div>
       </label>
       <label>
         Famille:
         <div class="form-group">
-            <label for="sel">Select list:</label>
-            <select class="form-control" id="sel" formControlName="famille">
-              <option *ngFor="let famille of familles" value="{{famille.id}}">{{famille.nom}}</option>
-            </select>
-          </div>
+          <label for="sel">Select list:</label>
+          <select class="form-control" id="sel" formControlName="famille">
+            <option *ngFor="let famille of familles" value="{{famille.id}}">{{famille.nom}}</option>
+          </select>
+        </div>
       </label>
     </form>
   </div>

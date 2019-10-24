@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Animal } from '../../../core/models/animal';
+import { Animal } from '../../../shared/models/animal';
 import { AnimauxService } from '../animaux.service';
 import { Router } from '@angular/router';
 

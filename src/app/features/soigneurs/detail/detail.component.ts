@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Soigneur } from '../../../core/models/soigneur';
+import { Soigneur } from '../../../shared/models/soigneur';
 
 @Component({
   selector: 'app-detail',

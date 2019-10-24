@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ErreurPageComponent } from './core/erreur-page/erreur-page.component';
+import { ErreurPageComponent } from './shared/erreur-page/erreur-page.component';
 
 const routes: Routes = [
   { path: 'soigneurs',

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Animal } from '../../../../core/models/animal';
-import { Alimentation } from 'src/app/core/models/alimentation';
+import { Animal } from '../../../../shared/models/animal';
+import { Alimentation } from 'src/app/shared/models/alimentation';
 
 @Component({
   selector: 'app-alimentation',

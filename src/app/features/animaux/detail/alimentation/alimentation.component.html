@@ -4,15 +4,12 @@
   </div>
   <div class="card-body">
     <form [formGroup]="form">
-      <label>
-        Alimentation:
-        <div class="form-group">
-          <label for="sel1">Select list:</label>
-          <select class="form-control" id="sel1" formControlName="alimentation">
-            <option *ngFor="let alim of alimentations" value="{{alim.id}}">{{alim.nom}}</option>
-          </select>
-        </div>
-      </label>
+      <div class="form-group">
+        <label for="sel1">Alimentation:</label>
+        <select class="form-control" id="sel1" formControlName="alimentation">
+          <option *ngFor="let alim of alimentations" value="{{alim.id}}">{{alim.nom}}</option>
+        </select>
+      </div>
     </form>
   </div>
 </div>

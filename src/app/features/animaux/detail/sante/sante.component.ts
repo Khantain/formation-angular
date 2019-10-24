@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { Animal } from '../../../../core/models/animal';
+import { Animal } from '../../../../shared/models/animal';
 
 @Component({
   selector: 'app-sante',

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Animal } from '../../core/models/animal';
-import { Alimentation } from 'src/app/core/models/alimentation';
-import { Famille } from 'src/app/core/models/famille';
+import { Animal } from '../../shared/models/animal';
+import { Alimentation } from 'src/app/shared/models/alimentation';
+import { Famille } from 'src/app/shared/models/famille';
 
 const animaux: Animal[] = [
   {
